@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap-4.5.0-dist/css/bootstrap.css">
+    <title>Calculator</title>
+</head>
+
+<style>
+   .searchBox
+    {
+        position: relative;
+        width: 100%;
+        margin: 10px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        /* background: #fff252; */
+        text-transform: capitalize;
+    }
+</style>
+<body>
+    
+    <div class="main ">
+        <div class="searchBox">
+            <input placeholder="Author" type="text" id="search" onkeyup="keyd()">
+            <input placeholder="Branch" type="text" id="search_1" onkeyup="keydu()">
+            <input placeholder="Register No." type="text" id="search_2" onkeyup="keydup()">
+            <input type="submit" placeholder="Submit" id="submit" onclick="enter()">
+        </div>
+        
+        <table class="myAcc table ">
+            <thead>
+                <th></th>
+                <th>Author</th>
+                <th>Branch</th>
+                <th>Register No.</th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1.)</td>
+                <td>Sandy</td>
+                <td>Programmer</td>
+                <td>#8528</td>
+            </tr>
+            <tr>
+                <td>2.)</td>
+                <td>Kundan</td>
+                <td>Engineer</td>
+                <td>#885</td>
+            </tr>
+            <tr>
+                <td>3.)</td>
+                <td>Sartaz</td>
+                <td>Client</td>
+                <td>#546</td>
+            </tr>
+            <tr>
+                <td>4.)</td>
+                <td>OP</td>
+                <td>Engineer</td>
+                <td>#156</td>
+            </tr>
+            <tr>
+                <td>5.)</td>
+                <td>Panday</td>
+                <td>Manager</td>
+                <td>#1985</td>
+            </tr>
+            <tr>
+                <td>6.)</td>
+                <td>Fisher</td>
+                <td>Engineer</td>
+                <td>#5643</td>
+            </tr>
+        </tbody>
+        </table>
+
+      
+    </div>
+    
+    <script>
+        let main = document.querySelector(".main");
+        let search = document.querySelector("#search");
+        let search1 = document.querySelector("#search_1");
+        let search2 = document.querySelector("#search_2");
+        let tab = main.querySelector(".myAcc");
+        let tr = tab.querySelectorAll("tr");
+        let td = tab.querySelectorAll("td");
+        let thead = tab.querySelector("thead > tr");
+
+const keyd = () =>  {
+
+            for(var i = 0; i<tr.length;i++){
+                const search_1 = search.value.toUpperCase();
+
+              const td = tr[i+1].getElementsByTagName("td")[1].innerHTML.toUpperCase();
+
+                if(td.indexOf(search_1) > -1)
+                { 
+                      
+                    tr[i+1].style.display = "";                   
+                }
+                else{
+                     
+                    tr[i+1].style.display = "none";
+                }}}
+
+const keydu = () =>  {
+
+        for(var i = 0; i<tr.length;i++){
+
+            const search_1 = search1.value.toUpperCase();
+
+        const td = tr[i+1].getElementsByTagName("td")[2].innerHTML.toUpperCase();
+
+            if(td.indexOf(search_1) > -1)
+            { 
+                
+                tr[i+1].style.display = "";                   
+            }
+            else{
+               
+                tr[i+1].style.display = "none";
+            }}}
+
+
+ const keydup = () =>  {
+
+            for(var i = 0; i<tr.length;i++){
+
+                const search_1 = search2.value.toUpperCase();
+
+            const td = tr[i+1].getElementsByTagName("td")[3].innerHTML.toUpperCase();
+
+                if(td.indexOf(search_1) > -1)
+                { 
+                      
+                    tr[i+1].style.display = "";                   
+                }
+                else{
+                    
+                    tr[i+1].style.display = "none";
+                }}}
+
+    
+ console.log("Before" + tr.length);
+const enter = (event) => {
+    
+    const srch = document.querySelector("#search").value;
+    const srch1 = document.querySelector("#search_1").value;
+    const srch2 = document.querySelector("#search_2").value;
+    const sub = document.querySelector("#submit");
+    console.log(srch ,srch1, srch2);
+    const i = 0;
+    const t_row = document.createElement("tr");
+    const t_doc = document.createElement("td");
+   
+    t_row.innerHTML = `
+
+        <td>${tr.length}.)</td>
+        <td>${srch}</td>
+        <td>${srch1}</td>
+        <td>#${srch2}</td>
+
+    `;
+    
+    let add = tab.appendChild(t_row);
+  console.log("after" + tr.length);
+}
+  
+    </script>
+
+</body>
+</html>
